@@ -2,20 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Classifier</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Retinal Image Eyes Disease Classification</title>
+    
 </head>
 <body>
-    <h1>Image Classifier</h1>
-    <form action="/predict" method="post" enctype="multipart/form-data">
-        <label for="file">Choose an image:</label>
-        <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png">
-        <input type="submit" value="Predict">
+    <h1>Retinal Image Eyes Disease Classification</h1>
+    <p>In Partial Fulfillment of the Requirements in Artificial Intelligence and its Applications </p>
+    <p>Southern Taiwan University of Science and Technology</p>
+    <p>Application Made by: Raven E. Cagulang 柯任遠</p>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
     </form>
-    {% if message %}
-        <p>{{ message }}</p>
+
+    {% if image_path %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image" style="max-width: 20%; height: auto;">
+
+        {% if prediction %}
+            <h2>Prediction:</h2>
+            <p>{{ prediction }}</p>
+        {% endif %}
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
     {% endif %}
 </body>
 </html>

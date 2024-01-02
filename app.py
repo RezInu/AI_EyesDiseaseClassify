@@ -16,7 +16,7 @@ class MCDropout(tensorflow.keras.layers.Dropout):
 
 # Load the model with custom layers
 with tensorflow.keras.utils.custom_object_scope({'MCDropout': MCDropout}):
-    model = load_model('model/AI_BCNN_model.h5')
+    model = load_model('model/AI_BCNN.h5')
 
 # Define the target size for the input images
 target_size = (227, 227)
